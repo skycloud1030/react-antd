@@ -3,6 +3,13 @@ React Antd 入門文件
 ## 相關文件
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+- A UI Design Language and React UI library [antd](https://ant.design/components/card/)
+- A declarative, efficient, and flexible JavaScript library for building user interfaces [react](https://reactjs.org/)
+
+## Demo
+
+- [preview](https://skycloud1030.github.io/react-antd/)
+- [code](https://github.com/skycloud1030/react-antd/blob/master/src/App.js)
 
 ## 安裝
 
