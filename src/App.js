@@ -1,53 +1,67 @@
 import React from "react";
-import { Card, Input } from "antd";
+import { Layout, Menu } from "antd";
+import { Card } from "antd";
 import { Row, Col } from "antd";
-import { Checkbox } from "antd";
-import "./App.css";
+import { BackTop } from "antd";
+import GithubCard from "./components/github-card/index.js";
+import repositories from "./data/repositories.js";
+import styles from "./App.module.css";
+const { Header, Content, Footer } = Layout;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { name: "" };
   }
-  onInputChange = e => {
-    this.setState({ name: e.target.value });
-  };
-  onChechChange = e => {
-    console.log(`checked = ${e.target.checked}`);
+  onSelect = ({ key }) => {
+    window.location.href = `#${key}`;
   };
   render() {
     return (
-      <div className="app">
-        <Row gutter={16}>
-          <Col xs={24}>
-            <Input
-              placeholder="Basic usage"
-              value={this.state.name}
-              onChange={this.onInputChange}
-            />
-          </Col>
-          <Col xs={24}>Your input : {this.state.name}</Col>
-          <Col xs={24}>
-            <Checkbox onChange={this.onChechChange}>Checkbox</Checkbox>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col xs={24} xl={12}>
-            <Card title="Default size card">
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
-            </Card>
-          </Col>
-          <Col xs={24} xl={12}>
-            <Card size="small" title="Small size card">
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
-            </Card>
-          </Col>
-        </Row>
-      </div>
+      <Layout className={styles.layout}>
+        <Header>
+          <div className={styles.logo} />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={["projects"]}
+            style={{ lineHeight: "64px" }}
+            onSelect={this.onSelect}
+          >
+            <Menu.Item key="projects">Projects</Menu.Item>
+          </Menu>
+        </Header>
+        <Content style={{ padding: "0 50px" }}>
+          <Row className={styles.row} gutter={16}>
+            <Col xs={24}>
+              <Card title="Projects">
+                <ul>
+                  {repositories.map(item => {
+                    return (
+                      <li key={item}>
+                        <a href={`#${item}`}>{item}</a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Card>
+            </Col>
+          </Row>
+          <Row className={styles.row} gutter={16}>
+            {repositories.map(item => {
+              return (
+                <Col xs={24} xxl={8} key={item}>
+                  <Card title={item} id={item} className={styles.card}>
+                    <GithubCard name={item}></GithubCard>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>CT Hung ©2020</Footer>
+        <BackTop />
+      </Layout>
     );
   }
 }

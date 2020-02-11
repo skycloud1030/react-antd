@@ -1,1 +1,0 @@
-{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,YACF,CACA,cACE,kBACF","file":"main.7a45ad22.chunk.css","sourcesContent":[".app {\n  padding: 20px;\n}\n.app .ant-col {\n  margin-bottom: 12px;\n}\n"]}

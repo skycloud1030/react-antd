@@ -1,0 +1,22 @@
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+.row :global .ant-col {
+  margin-top: 24px;
+}
+
+.badge {
+  margin-right: 8px;
+}
+.layout {
+  min-height: 100vh;
+}
+
+.card {
+  min-height: 200px;
+}
